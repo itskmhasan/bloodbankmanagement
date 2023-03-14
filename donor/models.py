@@ -32,13 +32,29 @@ class Donor(models.Model):
 
 
 class BloodDonate(models.Model):
+    BLOOD_GROUP = [
+        ('A+', 'A+'),
+        ('A-', 'A-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
+    ]
+    STATUS = [
+        ('Pending', 'Pending'),
+        ('Approved', 'Approved'),
+        ('Rejected', 'Rejected')
+    ]
     donor = models.ForeignKey(Donor, on_delete=models.CASCADE)
     disease = models.CharField(max_length=100, default="Nothing")
     age = models.PositiveIntegerField()
-    bloodgroup = models.CharField(max_length=10)
+    bloodgroup = models.CharField(max_length=10, choices=BLOOD_GROUP)
     unit = models.PositiveIntegerField(default=0)
-    status = models.CharField(max_length=20, default="Pending")
+    mobile = models.CharField(max_length=20, null=True)
+    status = models.CharField(max_length=20, choices=STATUS, default="Pending")
     date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.donor
+        return self.donor.user.first_name
