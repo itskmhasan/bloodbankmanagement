@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <style>
+        .xyz {
+            margin-bottom: 0px;
+            background-image: url('{% static "image/homepage.jpg" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .fa-tint {
+            color: red;
+        }
+    </style>
+
+</head>
+
+
+<body>
+{% include "blood/navbar.html" %}
+<br>
+<section id="section-jumbotron" style="margin-bottom: 0px;"
+         class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center xyz">
+    <div class="container text-center">
+        <p class="lead text-center text-white" style="font-size: 30px!important; font-weight: bold;">“Blood Stock”
+    </p>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>A+ <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ A1.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>B+ <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ B1.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>O+ <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ O1.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>AB+ <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ AB1.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>A- <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ A2.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>B- <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ B2.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>O- <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ O2.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="blood">
+                            <h2>AB- <i class="fas fa-tint"></i></h2>
+                        </div>
+                        <br><br>
+                        <div>
+                            <h4>{{ AB2.unit }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="container">
+
+        <p class="lead text-center" style="font-size: 30px!important; font-weight: bold;">“Blood Requested”</p>
+        <table class="table table-light table-hover table-bordered table-striped">
+            <thead class="bg-danger text-white">
+            <tr>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Age</th>
+
+                <th scope="col">Reason</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Unit (in ml)</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th class="text-right">Contact</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for t in requests %}
+                <tr>
+                    <td> {{ t.patient_name }}</td>
+                    <td>{{ t.patient_age }}</td>
+
+
+                    <td>{{ t.reason }}</td>
+                    <td>{{ t.bloodgroup }}</td>
+                    <td>{{ t.unit }}</td>
+                    <td>{{ t.date }}</td>
+                    <td>{{ t.status }}</td>
+
+
+                    <td class="text-right">
+                        {{ t.mobile }}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+    </div>
+
+    </div>
+</section>
+
+
+<div class="jumbotron" style="margin-top: 0px;margin-bottom: 0px;">
+
+    <p class="lead text-center">“Blood Bank Management System”
+      </p>
+
+    <p class="text-center">- Developed by Group_01_Kazi Mahibol Hasan</p>
+</div>
+{% include "blood/footer.html" %}
+</body>
+</html>
