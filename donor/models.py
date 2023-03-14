@@ -3,9 +3,19 @@ from django.contrib.auth.models import User
 
 
 class Donor(models.Model):
+    BLOOD_GROUP = [
+        ('A+', 'A+'),
+        ('A-', 'A-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
+    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to='profile_pic/Donor/', null=True, blank=True)
-    bloodgroup = models.CharField(max_length=10)
+    bloodgroup = models.CharField(max_length=10, choices=BLOOD_GROUP)
     address = models.CharField(max_length=40)
     mobile = models.CharField(max_length=20, null=False)
 
