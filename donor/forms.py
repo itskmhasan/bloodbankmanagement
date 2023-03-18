@@ -11,7 +11,6 @@ class DonorUserForm(forms.ModelForm):
             'password': forms.PasswordInput()
         }
 
-
 class DonorForm(forms.ModelForm):
     class Meta:
         model = models.Donor
