@@ -40,16 +40,15 @@
                 <ul class="navbar-nav ml-auto">
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
+                            <a class="nav-link" style="color: white;" href="/donor/donor-dashboard"><i
+                                    class="fas fa-user"></i>&nbsp; {{ request.user.username }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" style="color: white;" href="/logout">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Logout
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: white;" href="/donor/donor-dashboard"><i
-                                    class="fas fa-user"></i>&nbsp; Donor</a>
-                        </li>
-
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" style="color: white;" href="/donor/donorlogin"><i
